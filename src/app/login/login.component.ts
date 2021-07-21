@@ -24,19 +24,19 @@ export class LoginComponent implements OnInit {
   }
 
 
-acChange(event:any)
-{
-this.acno=event.target.value;
-}
-pwdChange(event:any)
-{
-this.pswd=event.target.value;
-}
-signin()
+// acChange(event:any)
+// {
+// this.acno=event.target.value;
+// }
+// pwdChange(event:any)
+// {
+// this.pswd=event.target.value;
+// }
+signin(a:any,p:any)
 {
 //alert("Login clicked");
-var acno=this.acno;
-var pswd=this.pswd;
+var acno=a.value;
+var pswd=p.value;
 let acDetails=this.user;
 if(acno in acDetails)
 {

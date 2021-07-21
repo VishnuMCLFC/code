@@ -7,11 +7,13 @@
     <div class="right-pane">
         <h1>Bank application login</h1>
        <!-- <h5>{{sin}}</h5>-->
-        <input type="text" name="" id="username" (change)="acChange($event)"  placeholder="username">  <!--[value]="accno"-->
-    <input type="text" name="" id="password" (change)="pwdChange($event)" placeholder="password">
+       <!-- <input type="text" name="" id="username" (change)="acChange($event)"  placeholder="username"> 
+        <input type="text" name="" id="password" (change)="pwdChange($event)" placeholder="password"> [value]="accno"-->
+        <input type="text" name="" id="username" #acno  placeholder="username">
+    <input type="text" name="" id="password" #pwd placeholder="password">
     <!-- <input type="text" id="bal" placeholder="balance"> -->
     <br>
-    <input type="submit" class="bttn" (click)="signin()" value="sign in">
+    <input type="submit" class="bttn" (click)="signin(acno,pwd)" value="sign in">
     <!-- <input type="submit" class="bttn" onclick="listAllUsers()" value="list users"> -->
    
     <!-- <button class="bttn" onclick="createUser()"></button>
