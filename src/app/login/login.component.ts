@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-login',
@@ -9,49 +11,36 @@ export class LoginComponent implements OnInit {
 
   //sin="Your Banking Partner";
   //accno="Enter your account number";
-  user:any={
-    1000:{acno:1000,uname:"Akhil",password:"userone",balance:3000},
-    1001:{acno:1001,uname:"Abhi",password:"usertwo",balance:1000},
-    1002:{acno:1002,uname:"Anu",password:"userthree",balance:5000},
+  // user:any={
+  //   1000:{acno:1000,uname:"Akhil",password:"userone",balance:3000},
+  //   1001:{acno:1001,uname:"Abhi",password:"usertwo",balance:1000},
+  //   1002:{acno:1002,uname:"Anu",password:"userthree",balance:5000},
     
-  }
-
-  acno="";
-  pswd=""
-  constructor() { }
+  // }
+acno="";
+pswd="";
+  
+  constructor(private router:Router, private ds:DataService) { }
 
   ngOnInit(): void {
   }
 
 
-// acChange(event:any)
-// {
-// this.acno=event.target.value;
-// }
-// pwdChange(event:any)
-// {
-// this.pswd=event.target.value;
-// }
-signin(a:any,p:any)
+
+
+signin()
 {
-//alert("Login clicked");
-var acno=a.value;
-var pswd=p.value;
-let acDetails=this.user;
-if(acno in acDetails)
+
+var acno=this.acno;
+console.log(acno);
+
+var pswd=this.pswd;
+var result=this.ds.signin(acno,pswd);
+if(result)
 {
-  if(pswd==acDetails[acno]["password"])
-  {
-    alert("login successful");
-  }
-  else
-  {
-    alert("Incorrect password")
-  }
-}
-else
-{
-  alert("Invalid user")
+  this.router.navigateByUrl("dashboard");
+}else{
+  this.router.navigateByUrl("");
 }
 }
 }
